@@ -7,7 +7,7 @@
 
 > 📖 **Tài liệu chính thức được biên dịch 1:1:**
 > - 👉 [**Kotlin Coroutines & Flow — JetBrains Official Guide**](official-coroutines-guide/README.md) (Trọn bộ 14 bài chuyên sâu từ Cài đặt, Basics, Flows, Channels, Debugging, Dự án thực hành Hands-on đến Sổ tay tra cứu & 20 câu hỏi phỏng vấn Senior).
-> - 👉 [**Android Coroutines & Flow — Google Official Guide**](official-android-coroutines-flow/README.md) (Trọn bộ 5 bài chuyên sâu theo chuẩn Google Android Developers: Coroutines on Android, Best Practices, Flows, StateFlow/SharedFlow, và Lifecycle-aware Collection).
+> - 👉 [**Android Coroutines & Flow — Google Official Guide**](official-android-coroutines-flow/README.md) (Trọn bộ 6 bài chuyên sâu theo chuẩn Google Android Developers: Coroutines on Android, Best Practices, Flows, StateFlow/SharedFlow, Lifecycle-aware Collection, và Unit Testing với Turbine).
 
 ---
 

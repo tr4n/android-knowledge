@@ -5,8 +5,10 @@
 > - [Best practices for coroutines in Android — developer.android.com](https://developer.android.com/kotlin/coroutines/coroutines-best-practices)
 > - [Kotlin flows on Android — developer.android.com](https://developer.android.com/kotlin/flow?hl=vi)
 > - [StateFlow and SharedFlow — developer.android.com](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow)
+> - [Testing coroutines on Android — developer.android.com](https://developer.android.com/kotlin/coroutines/test?hl=vi)
+> - [Testing Kotlin flows on Android — developer.android.com](https://developer.android.com/kotlin/flow/test?hl=vi)
 >
-> **Phiên bản áp dụng:** Kotlin 2.0+, `kotlinx.coroutines` 1.9+ / 1.11+, AndroidX Lifecycle 2.8+  
+> **Phiên bản áp dụng:** Kotlin 2.0+, `kotlinx.coroutines` 1.9+ / 1.11+, AndroidX Lifecycle 2.8+, Turbine 1.2+  
 > **Ngôn ngữ:** Tiếng Việt chuyên ngành (bảo lưu thuật ngữ quốc tế chuẩn trong ngoặc đơn)
 
 ---
@@ -15,10 +17,11 @@
 
 Bộ tài liệu này được biên soạn và hệ thống hoá theo chuẩn cấu trúc và nội dung từ **Google Android Developers**, tập trung chuyên biệt vào cách thức vận hành của Coroutines và Asynchronous Flow trong hệ sinh thái Android:
 
-- **Bám sát kiến trúc hiện đại (Modern Android Development - MAD):** Tích hợp chặt chẽ với Jetpack Lifecycle, ViewModel, Jetpack Compose, Room và Retrofit.
+- **Bám sát kiến trúc hiện đại (Modern Android Development - MAD):** Tích hợp chặt chẽ với Jetpack Lifecycle, ViewModel, Jetpack Compose, Room và Firebase Firestore.
 - **Bảo toàn 100% mã nguồn mẫu chính thức:** Các ví dụ thực tế được Google thiết kế để giải quyết vấn đề quản lý thread, xử lý tác vụ mạng chạy lâu (long-running tasks) và tránh đơ giật giao diện (ANR - Application Not Responding).
 - **Phân tích sâu cơ chế Main-Safety & Structured Concurrency:** Hướng dẫn cách phân chia trách nhiệm giữa các tầng (UI Layer, Domain Layer, Data Layer) sao cho an toàn tuyệt đối với luồng chính (Main thread).
-- **Tổng hợp đầy đủ các Best Practices độc quyền từ Google Engineering:** Bao gồm các quy tắc Dependency Injection cho Dispatcher, hủy bỏ coroutine có phối hợp (cooperative cancellation) và mô hình StateFlow/SharedFlow xử lý sự kiện giao diện.
+- **Chuyển đổi Callback sang Flow với `callbackFlow`:** Hướng dẫn chính thức về cách bọc các API lắng nghe sự kiện thành luồng Flow với cơ chế an toàn `trySend` và `awaitClose`.
+- **Hệ thống Kiểm thử Tự Động Toàn Diện:** Bộ hướng dẫn Unit Test chuẩn mực cho Coroutines và Flow với `runTest`, `StandardTestDispatcher` và CashApp `Turbine`.
 
 ---
 
@@ -26,11 +29,12 @@ Bộ tài liệu này được biên soạn và hệ thống hoá theo chuẩn c
 
 | STT | Bài học (Tiếng Việt) | Nguồn tài liệu gốc (Google Developers) | Trọng tâm kiến thức |
 | :---: | :--- | :--- | :--- |
-| **01** | [**Kotlin Coroutines trên Android**](01-kotlin-coroutines-on-android.md) | [Kotlin coroutines on Android](https://developer.android.com/kotlin/coroutines?hl=vi) | 4 tính năng cốt lõi, Main-safety, `Dispatchers`, `viewModelScope`, kiến trúc đăng nhập mẫu. |
-| **02** | [**Thực hành Tốt nhất cho Coroutines (Best Practices)**](02-coroutines-best-practices.md) | [Coroutines Best Practices](https://developer.android.com/kotlin/coroutines/coroutines-best-practices) | 9 quy tắc vàng từ Google: Inject Dispatchers, Suspend Main-safe, Không expose Mutable types, Cooperative cancellation. |
-| **03** | [**Kotlin Flows trên Android**](03-kotlin-flows-on-android.md) | [Kotlin flows on Android](https://developer.android.com/kotlin/flow?hl=vi) | Asynchronous Stream, Producer-Intermediary-Consumer, Operators, `catch` & Exception Transparency, `flowOn`. |
-| **04** | [**StateFlow & SharedFlow**](04-stateflow-and-sharedflow.md) | [StateFlow & SharedFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow) | UI State Holder, Cold vs Hot Flow, `stateIn`, `shareIn`, chiến lược `WhileSubscribed(5000)`. |
-| **05** | [**Thu thập Flow theo Vòng đời Android (Lifecycle-aware Collection)**](05-lifecycle-aware-flow-collection.md) | Google Architecture & Lifecycle Guide | `repeatOnLifecycle`, `flowWithLifecycle`, `collectAsStateWithLifecycle` trong Jetpack Compose, chống rò rỉ tài nguyên. |
+| **01** | [**Kotlin Coroutines trên Android**](01-kotlin-coroutines-on-android.md) | [Kotlin coroutines on Android](https://developer.android.com/kotlin/coroutines?hl=vi) | 4 tính năng cốt lõi, Main-safety, `Dispatchers`, `withContext`, `viewModelScope`, kiến trúc đăng nhập mẫu 3 tầng, xử lý `try-catch`. |
+| **02** | [**Thực hành Tốt nhất cho Coroutines (Best Practices)**](02-coroutines-best-practices.md) | [Coroutines Best Practices](https://developer.android.com/kotlin/coroutines/coroutines-best-practices) | 9 quy tắc vàng từ Google: Inject Dispatchers, Suspend Main-safe, Không expose Mutable types, Cooperative cancellation, Tránh `GlobalScope`. |
+| **03** | [**Kotlin Flows trên Android**](03-kotlin-flows-on-android.md) | [Kotlin flows on Android](https://developer.android.com/kotlin/flow?hl=vi) | Asynchronous Stream, Producer-Intermediary-Consumer, `flow { emit }`, `map`, `collect`, `catch` & Exception Transparency, `flowOn`, Room Database, và **`callbackFlow` với `awaitClose`**. |
+| **04** | [**StateFlow & SharedFlow**](04-stateflow-and-sharedflow.md) | [StateFlow & SharedFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow) | UI State Holder, Cold vs Hot Flow, `stateIn`, `shareIn`, chiến lược `WhileSubscribed(5000)` chống rò rỉ khi xoay màn hình. |
+| **05** | [**Thu thập Flow theo Vòng đời Android (Lifecycle-aware Collection)**](05-lifecycle-aware-flow-collection.md) | Google Architecture & Lifecycle Guide | Nguy cơ collect ở background, `repeatOnLifecycle`, `flowWithLifecycle`, tiêu chuẩn vàng `collectAsStateWithLifecycle` trong Jetpack Compose. |
+| **06** | [**Kiểm thử Coroutines & Flow trên Android (Unit Testing)**](06-testing-coroutines-and-flow.md) | [Coroutines Testing](https://developer.android.com/kotlin/coroutines/test?hl=vi) & [Flow Testing](https://developer.android.com/kotlin/flow/test?hl=vi) | `runTest` bỏ qua thời gian ảo, `StandardTestDispatcher` vs `UnconfinedTestDispatcher`, `MainDispatcherRule`, kiểm thử luồng với CashApp `Turbine`. |
 
 ---
 
@@ -57,6 +61,7 @@ Bộ tài liệu này được biên soạn và hệ thống hoá theo chuẩn c
 │                                                                        │
 │  - Đảm bảo Main-safety: withContext(ioDispatcher)                      │
 │  - Xuất dữ liệu luồng: Room Database (Flow<T>), Retrofit API (suspend) │
+│  - Chuyển đổi Callback API sang Flow: callbackFlow + awaitClose        │
 │  - Không leak Scope, xử lý Business Exceptions                        │
 └────────────────────────────────────────────────────────────────────────┘
 ```
@@ -86,5 +91,7 @@ dependencies {
     // 5. Kiểm thử Coroutines & Flow (Unit Test)
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
     testImplementation("app.cash.turbine:turbine:1.2.0")
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("com.google.truth:truth:1.4.2")
 }
 ```
