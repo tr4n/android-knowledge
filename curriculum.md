@@ -7,6 +7,7 @@
 > 💡 **Tài liệu nền tảng chuẩn mực:**
 > - [**Kotlin Coroutines & Flow — JetBrains Official Guide (Dịch chuẩn 1:1)**](official-coroutines-guide/README.md) bám sát cẩm nang cốt lõi ngôn ngữ từ JetBrains.
 > - [**Android Coroutines & Flow — Google Official Guide (Dịch chuẩn 1:1)**](official-android-coroutines-flow/README.md) bám sát tài liệu chính thức từ Google Android Developers (`developer.android.com`).
+> - [**Jetpack Compose State — Google Official Guide (Dịch chuẩn 1:1)**](official-android-compose-state/README.md) bám sát tài liệu chính thức về State, State Hoisting, Saving State, Phases & Snapshot System từ Google Android Developers.
 
 ---
 

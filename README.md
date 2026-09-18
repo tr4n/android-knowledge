@@ -8,6 +8,7 @@
 > 📖 **Tài liệu chính thức được biên dịch 1:1:**
 > - 👉 [**Kotlin Coroutines & Flow — JetBrains Official Guide**](official-coroutines-guide/README.md) (Trọn bộ 14 bài chuyên sâu từ Cài đặt, Basics, Flows, Channels, Debugging, Dự án thực hành Hands-on đến Sổ tay tra cứu & 20 câu hỏi phỏng vấn Senior).
 > - 👉 [**Android Coroutines & Flow — Google Official Guide**](official-android-coroutines-flow/README.md) (Trọn bộ 6 bài chuyên sâu theo chuẩn Google Android Developers: Coroutines on Android, Best Practices, Flows, StateFlow/SharedFlow, Lifecycle-aware Collection, và Unit Testing với Turbine).
+> - 👉 [**Jetpack Compose State — Google Official Guide**](official-android-compose-state/README.md) (Trọn bộ 7 bài chuyên sâu theo chuẩn Google Android Developers: State & UDF, Phân cấp State Holders, Lưu trữ với rememberSaveable & SavedStateHandle, 3 pha Compose & Tối ưu 120 FPS, derivedStateOf & snapshotFlow, MVCC Snapshot System & Stability, Case Study & Testing với StateRestorationTester).
 
 ---
 
